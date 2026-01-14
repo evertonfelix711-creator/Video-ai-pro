@@ -1,6 +1,13 @@
 import { Navbar } from "../components/Navbar";
 import { Button } from "../components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
 import { Check, Sparkles, Zap, Crown } from "lucide-react";
 
 const plans = [
@@ -20,6 +27,7 @@ const plans = [
     cta: "Começar Grátis",
     popular: false,
     gradient: "from-muted to-secondary",
+    link: "/create", // fluxo grátis
   },
   {
     name: "Pro",
@@ -40,6 +48,7 @@ const plans = [
     cta: "Assinar Pro",
     popular: true,
     gradient: "from-primary to-primary-glow",
+    link: "https://pay.kirvano.com/3c491b8a-96e8-4f25-89c5-8b4e64fe9ab7",
   },
   {
     name: "Business",
@@ -59,9 +68,10 @@ const plans = [
       "Treinamento da equipe",
       "SLA garantido",
     ],
-    cta: "Falar com Vendas",
+    cta: "Assinar Business",
     popular: false,
     gradient: "from-accent to-accent-glow",
+    link: "https://pay.kirvano.com/ee469971-5e40-4a60-8669-4bf1b455cd44",
   },
 ];
 
@@ -69,7 +79,7 @@ const Pricing = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      
+
       <main className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
@@ -80,7 +90,7 @@ const Pricing = () => {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Escolha o plano perfeito para suas necessidades. 
+              Escolha o plano perfeito para suas necessidades.
               Cancele quando quiser, sem compromisso.
             </p>
           </div>
@@ -88,10 +98,12 @@ const Pricing = () => {
           {/* Pricing Cards */}
           <div className="grid md:grid-cols-3 gap-8 lg:gap-6">
             {plans.map((plan) => (
-              <Card 
+              <Card
                 key={plan.name}
                 className={`relative flex flex-col bg-card border-border hover:border-primary/50 transition-all duration-300 ${
-                  plan.popular ? 'ring-2 ring-primary shadow-glow scale-105' : ''
+                  plan.popular
+                    ? "ring-2 ring-primary shadow-glow scale-105"
+                    : ""
                 }`}
               >
                 {plan.popular && (
@@ -101,9 +113,11 @@ const Pricing = () => {
                     </span>
                   </div>
                 )}
-                
+
                 <CardHeader className="text-center pb-2">
-                  <div className={`w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${plan.gradient} flex items-center justify-center`}>
+                  <div
+                    className={`w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${plan.gradient} flex items-center justify-center`}
+                  >
                     <plan.icon className="w-7 h-7 text-primary-foreground" />
                   </div>
                   <CardTitle className="text-2xl">{plan.name}</CardTitle>
@@ -111,44 +125,58 @@ const Pricing = () => {
                     {plan.description}
                   </CardDescription>
                 </CardHeader>
-                
+
                 <CardContent className="flex-1">
                   <div className="text-center mb-6">
-                    <span className="text-5xl font-bold text-foreground">{plan.price}</span>
-                    <span className="text-muted-foreground">{plan.period}</span>
+                    <span className="text-5xl font-bold text-foreground">
+                      {plan.price}
+                    </span>
+                    <span className="text-muted-foreground">
+                      {plan.period}
+                    </span>
                   </div>
-                  
+
                   <ul className="space-y-3">
                     {plan.features.map((feature, index) => (
                       <li key={index} className="flex items-start gap-3">
                         <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                        <span className="text-foreground/90">{feature}</span>
+                        <span className="text-foreground/90">
+                          {feature}
+                        </span>
                       </li>
                     ))}
                   </ul>
                 </CardContent>
-                
+
                 <CardFooter>
-                  <Button 
-                    className={`w-full h-12 text-base font-semibold transition-all ${
-                      plan.popular 
-                        ? 'bg-gradient-primary hover:shadow-glow' 
-                        : plan.name === 'Business'
-                          ? 'bg-gradient-accent hover:shadow-accent-glow'
-                          : 'bg-secondary hover:bg-secondary/80'
-                    }`}
+                  <a
+                    href={plan.link}
+                    target={plan.name === "Free" ? "_self" : "_blank"}
+                    rel="noopener noreferrer"
+                    className="w-full"
                   >
-                    {plan.cta}
-                  </Button>
+                    <Button
+                      className={`w-full h-12 text-base font-semibold transition-all ${
+                        plan.popular
+                          ? "bg-gradient-primary hover:shadow-glow"
+                          : plan.name === "Business"
+                          ? "bg-gradient-accent hover:shadow-accent-glow"
+                          : "bg-secondary hover:bg-secondary/80"
+                      }`}
+                    >
+                      {plan.cta}
+                    </Button>
+                  </a>
                 </CardFooter>
               </Card>
             ))}
           </div>
 
-          {/* FAQ or Trust badges */}
+          {/* Trust */}
           <div className="mt-20 text-center">
             <p className="text-muted-foreground mb-6">
-              Todos os planos incluem garantia de 7 dias. Não gostou? Devolvemos seu dinheiro.
+              Todos os planos incluem garantia de 7 dias.
+              Não gostou? Devolvemos seu dinheiro.
             </p>
             <div className="flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
