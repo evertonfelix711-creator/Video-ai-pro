@@ -8,7 +8,6 @@ import Create from "./pages/Create";
 import Gallery from "./pages/Gallery";
 import Pricing from "./Pricing";
 import NotFound from "./pages/NotFound";
-
 const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
