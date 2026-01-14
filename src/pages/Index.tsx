@@ -15,7 +15,7 @@ const Index = () => {
         </button>
       </Link>
     </div>
-
+    
   </div>
 );
 
