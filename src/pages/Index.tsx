@@ -14,8 +14,7 @@ const Index = () => {
           Ver Planos e Preços
         </button>
       </Link>
-    </div>
-    
+    </div>  
   </div>
 );
 
