@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
-    retornar (
   <div nomeDaClasse="min-h-screen bg-background">
     <Barra de navegação />
     <Herói />
