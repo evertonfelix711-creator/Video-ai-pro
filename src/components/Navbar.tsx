@@ -24,12 +24,20 @@ export const Navbar = () => {
             <Link to="/" className="text-foreground hover:text-primary transition-colors">
               Início
             </Link>
+
             <Link to="/create" className="text-foreground hover:text-primary transition-colors">
               Criar Vídeos
             </Link>
+
             <Link to="/gallery" className="text-foreground hover:text-primary transition-colors">
               Galeria
             </Link>
+
+            {/* PREÇOS */}
+            <Link to="/pricing" className="text-foreground hover:text-primary transition-colors font-semibold">
+              Preços
+            </Link>
+
             <Button className="bg-gradient-accent hover:shadow-accent-glow transition-all">
               Começar Grátis
             </Button>
@@ -56,6 +64,7 @@ export const Navbar = () => {
             >
               Início
             </Link>
+
             <Link
               to="/create"
               className="block py-2 text-foreground hover:text-primary transition-colors"
@@ -63,6 +72,7 @@ export const Navbar = () => {
             >
               Criar Vídeos
             </Link>
+
             <Link
               to="/gallery"
               className="block py-2 text-foreground hover:text-primary transition-colors"
@@ -70,6 +80,16 @@ export const Navbar = () => {
             >
               Galeria
             </Link>
+
+            {/* PREÇOS MOBILE */}
+            <Link
+              to="/pricing"
+              className="block py-2 font-semibold text-foreground hover:text-primary transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Preços
+            </Link>
+
             <Button className="w-full bg-gradient-accent">
               Começar Grátis
             </Button>
